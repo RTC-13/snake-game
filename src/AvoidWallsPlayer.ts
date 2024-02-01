@@ -1,6 +1,9 @@
 import Player from "./Player";
 import { Snake, Direction } from "./Snake";
 
+/**
+ * Class representing player wall behavior.
+ */
 class AvoidWallsPlayer extends Player {
   makeTurn(): void {
     const snakeDirection = this.sc.snakeDirection;
@@ -16,7 +19,6 @@ class AvoidWallsPlayer extends Player {
       (snakeDirection === Direction.Down &&
         snakePosition.getY === worldHeight - 1)
     ) {
-      this.sc.turnSnakeRight();
     }
   }
 }

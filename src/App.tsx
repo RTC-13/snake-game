@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
-import Display from "./Display";
-import display from "./display";
+import Display from "./display";
+import Displays from "./Displays";
 import Car from "./Car";
 import Duck from "./Duck";
 
@@ -42,7 +42,7 @@ export default function App() {
         Then visit the <a href="docs/">documentation</a>. Every time you update
         the doc comments, run the second command in the terminal.
       </p>
-      <Display />
+      <Displays />
     </div>
   );
 }
