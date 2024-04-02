@@ -2,7 +2,7 @@ import Player from "./Player";
 import { Snake, Direction } from "./Snake";
 
 /**
- * Class representing player wall behavior.
+ * Class representing wall behavior according to player location.
  */
 class AvoidWallsPlayer extends Player {
   makeTurn(): void {
@@ -12,12 +12,11 @@ class AvoidWallsPlayer extends Player {
     const worldHeight = this.sc.worldHeight;
 
     if (
-      (snakeDirection === Direction.Left && snakePosition.getX === 0) ||
+      (snakeDirection === Direction.Left && snakePosition.x === 0) ||
       (snakeDirection === Direction.Right &&
-        snakePosition.getX === worldWidth - 1) ||
-      (snakeDirection === Direction.Up && snakePosition.getY === 0) ||
-      (snakeDirection === Direction.Down &&
-        snakePosition.getY === worldHeight - 1)
+        snakePosition.x === worldWidth - 1) ||
+      (snakeDirection === Direction.Up && snakePosition.y === 0) ||
+      (snakeDirection === Direction.Down && snakePosition.y === worldHeight - 1)
     ) {
     }
   }

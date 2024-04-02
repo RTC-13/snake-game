@@ -18,14 +18,14 @@ class Point {
    * Returns the current X value of the coordinate.
    * @return X coordinate of the point.
    */
-  public get getX() {
+  public get x() {
     return this.xcoord;
   }
   /**
    * Returns the current Y value of the coordinate.
    * @return Y coordinate of the point.
    */
-  public get getY() {
+  public get y() {
     return this.ycoord;
   }
 }

@@ -4,6 +4,9 @@ import Display from "./display";
 import Displays from "./Displays";
 import Car from "./Car";
 import Duck from "./Duck";
+import CatEngine from "./CatEngine";
+import CarStore from "./CarStore";
+import CarMileLogger from "./carMileLogger";
 
 export default function App() {
   useEffect(() => {
@@ -21,12 +24,20 @@ export default function App() {
     // redCar.drive(20);
     // display("MILES", redCar.miles);
     // redCar.miles = -50;
-    const duck_one = new Duck("blue", "Wood");
-    duck_one.quack(5);
-    const duck_two = new Duck("Green", "Mallard");
-    duck_two.quack(7);
-    const duck_three = new Duck("Yellow", "Another type of whatever duck");
-    duck_three.quack(2);
+    // const duck_one = new Duck("blue", "Wood");
+    // duck_one.quack(5);
+    // const duck_two = new Duck("Green", "Mallard");
+    // duck_two.quack(7);
+    // const duck_three = new Duck("Yellow", "Another type of whatever duck");
+    // duck_three.quack(2);
+    const redCar = new Car("red", new CatEngine());
+    const blueCar = new Car("blue", new CatEngine());
+    const greenCar = new Car("green", new CatEngine());
+    const cs = new CarStore([redCar, blueCar, greenCar]);
+    redCar.drive(10);
+    blueCar.drive(20);
+    greenCar.drive(30);
+    cs.applyToAllCars(new CarMileLogger()); // should display 10, then 20, then 30
   }, []);
   return (
     <div className="App">

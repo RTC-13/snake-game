@@ -34,23 +34,23 @@ class Snake {
   public move(steps: number) {
     if (this.currentDirection === Direction.Left) {
       this.currentPosition = new Point(
-        this.currentPosition.getX - steps,
-        this.currentPosition.getY,
+        this.currentPosition.x - steps,
+        this.currentPosition.y
       );
     } else if (this.currentDirection === Direction.Right) {
       this.currentPosition = new Point(
-        this.currentPosition.getX + steps,
-        this.currentPosition.getY,
+        this.currentPosition.x + steps,
+        this.currentPosition.y
       );
     } else if (this.currentDirection === Direction.Up) {
       this.currentPosition = new Point(
-        this.currentPosition.getX,
-        this.currentPosition.getY - steps,
+        this.currentPosition.x,
+        this.currentPosition.y - steps
       );
     } else if (this.currentDirection === Direction.Down) {
       this.currentPosition = new Point(
-        this.currentPosition.getX,
-        this.currentPosition.getY + steps,
+        this.currentPosition.x,
+        this.currentPosition.y + steps
       );
     }
   }
