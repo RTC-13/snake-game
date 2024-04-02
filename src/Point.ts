@@ -28,6 +28,14 @@ class Point {
   public get y() {
     return this.ycoord;
   }
+
+  /**
+   * returns string representation of the point class.
+   * @returns string
+   */
+  toString() {
+    return `x: ${this.xcoord}, y: ${this.ycoord}`;
+  }
 }
 
 export default Point;

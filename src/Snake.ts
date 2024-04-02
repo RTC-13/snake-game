@@ -113,6 +113,10 @@ class Snake {
   public get direction() {
     return this.currentDirection;
   }
+  /**
+   * String representation of the Snake class.
+   * @returns String
+   */
   toString() {
     return this.snakeColor + "is at the position" + this.position;
   }
