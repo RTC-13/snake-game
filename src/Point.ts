@@ -1,7 +1,7 @@
 /**
  * Class representing a point in a graph.
  */
-class Point {
+export class Point {
   private xcoord: number;
   private ycoord: number;
 
@@ -31,11 +31,12 @@ class Point {
 
   /**
    * returns string representation of the point class.
-   * @returns string
+   * @example
+   * // Returns x: 0, y: 0
+   * Point.toString()
+   * @returns {string}
    */
-  toString() {
+  toString(): string {
     return `x: ${this.xcoord}, y: ${this.ycoord}`;
   }
 }
-
-export default Point;

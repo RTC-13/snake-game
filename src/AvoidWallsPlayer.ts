@@ -7,12 +7,15 @@ import SnakeController from "./SnakeController";
  */
 class AvoidWallsPlayer extends Player {
   /**
-   *
-   * @param snakeController Snake controller
+   * Create AvoidWallsPlayer
+   * @param {SnakeController} passedSakeController
    */
-  constructor(snakeController: SnakeController) {
-    super(snakeController);
+  constructor(passedSakeController: SnakeController) {
+    super(passedSakeController);
   }
+  /**
+   * Turn the snake to avoid the user from hitting the walls of the canvas.
+   */
   makeTurn(): void {
     const snakeDirection = this.sc.snakeDirection;
     const snakePosition = this.sc.snakePosition;

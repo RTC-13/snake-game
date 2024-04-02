@@ -58,7 +58,7 @@ class WorldModel {
 
   /**
    * Sets the World View.
-   *
+   * @param worldView
    */
   public set view(worldView: IWorldView) {
     this.worldView = worldView;

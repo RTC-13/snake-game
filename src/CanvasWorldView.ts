@@ -2,7 +2,7 @@ import IWorldView from "./IWorldView";
 import WorldModel from "./WorldModel";
 
 /**
- * Class representing a Canvas World View
+ * Class representing a Canvas World View.
  */
 class CanvasWorldView implements IWorldView {
   private scalingFactor: number;
@@ -11,7 +11,7 @@ class CanvasWorldView implements IWorldView {
 
   /**
    * Create the Canvas World View.
-   * @param scalingFactor scale of the world
+   * @param {number} scalingFactor scale of the world.
    */
 
   constructor(scalingFactor: number) {
@@ -23,13 +23,13 @@ class CanvasWorldView implements IWorldView {
   }
   /**
    * Display the canvas of the world.
-   * @param worldModel world model of the snake game.
+   * @param {WorldModel} passedWorldModel model of the snake game to be used in the canvas.
    */
 
-  public display(worldModel: WorldModel) {
-    const snake = worldModel.snake;
-    this.worldCanvas.width = worldModel.width * this.scalingFactor;
-    this.worldCanvas.height = worldModel.height * this.scalingFactor;
+  public display(passedWorldModel: WorldModel): void {
+    const snake = passedWorldModel.snake;
+    this.worldCanvas.width = passedWorldModel.width * this.scalingFactor;
+    this.worldCanvas.height = passedWorldModel.height * this.scalingFactor;
 
     this.context.fillStyle = snake.color;
     this.context.fillRect(

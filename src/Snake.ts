@@ -1,7 +1,7 @@
 // import display from "./display";
 
 // place your code on line 5 above the export statement below
-import Point from "./Point";
+import { Point } from "./Point";
 /**
  * Class representing a Snake.
  */
@@ -24,7 +24,6 @@ class Snake {
   constructor(color: string) {
     this.snakeColor = color;
     this.currentPosition = new Point(0, 0);
-    //  added enum support
     this.currentDirection = Direction.Right;
   }
 
@@ -110,24 +109,24 @@ class Snake {
 
   /**
    *Returns the current position of the Snake.
-   @return position of the snake.
+   @returns {Point} coordinates
    */
   public get position(): Point {
     return this.currentPosition;
   }
   /**
    * Returns the current direction of the snake.
-   * @return direction of the snake.
+   * @return {Direction} of the snake.
    */
   public get direction(): Direction {
     return this.currentDirection;
   }
   /**
    * String representation of the Snake class.
-   * @returns String
+   * @returns {string}
    */
 
-  toString(): String {
+  toString(): string {
     return this.snakeColor + "is at the position" + this.position;
   }
 }

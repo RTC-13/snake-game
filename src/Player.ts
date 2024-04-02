@@ -8,7 +8,7 @@ abstract class Player {
 
   /**
    * Create a player
-   * @param passedSnakeController snake controller for the player class.
+   * @param {SnakeController} passedSnakeController snake controller for the player class.
    */
   constructor(passedSnakeController: SnakeController) {
     this.sc = passedSnakeController;
