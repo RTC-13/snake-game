@@ -9,7 +9,7 @@ import CarStore from "./CarStore";
 import CarMileLogger from "./carMileLogger";
 import { CanvasWorldView } from "./CanvasWorldView";
 import { Snake } from "./Snake";
-import WorldModel from "./WorldModel";
+import { WorldModel } from "./WorldModel";
 
 export default function App() {
   useEffect(() => {

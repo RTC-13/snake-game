@@ -1,5 +1,5 @@
-import IWorldView from "./IWorldView";
-import WorldModel from "./WorldModel";
+import { IWorldView } from "./IWorldView";
+import { WorldModel } from "./WorldModel";
 
 /**
  * Class representing a Canvas World View.

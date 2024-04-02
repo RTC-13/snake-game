@@ -1,5 +1,5 @@
-import WorldModel from "./WorldModel";
+import { WorldModel } from "./WorldModel";
 
-export default interface IWorldView {
+export interface IWorldView {
   display: (worldModel: WorldModel) => void;
 }

@@ -1,7 +1,7 @@
 // import display from "./display";
 
 // place your code on line 5 above the export statement below
-import IWorldView from "./IWorldView";
+import { IWorldView } from "./IWorldView";
 import { Snake } from "./Snake";
 import display from "./display";
 /**
@@ -67,5 +67,3 @@ export class WorldModel {
 
 // const blueSnake = new Snake("blue");
 // const world = new WorldModel(blueSnake, 100, 100);
-
-export default WorldModel;

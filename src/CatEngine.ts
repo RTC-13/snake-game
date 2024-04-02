@@ -1,5 +1,5 @@
 // CatEngine.ts
-import IEngine from "./IEngine";
+import { IEngine } from "./IEngine";
 import display from "./display";
 
 class CatEngine implements IEngine {
