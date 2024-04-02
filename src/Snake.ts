@@ -19,7 +19,7 @@ class Snake {
 
   /**
    * Create a snake
-   * @param color - the color of the snake.
+   * @param {string} color of the snake
    */
   constructor(color: string) {
     this.snakeColor = color;
@@ -27,9 +27,18 @@ class Snake {
     //  added enum support
     this.currentDirection = Direction.Right;
   }
+
+  /**
+   * Access the color of the snake
+   * @returns {string} color
+   */
+  public get color(): string {
+    return this.snakeColor;
+  }
+
   /**
    * Moves the snake forward the number of steps given.
-   * @param steps - The number of steps to move the snake.
+   * @param {number} steps - The number of steps to move the snake.
    */
   public move(steps: number) {
     if (this.currentDirection === Direction.Left) {
@@ -60,7 +69,7 @@ class Snake {
    * Turns the snake, if facing forward it will turn it backwards and viceversa.
    *
    */
-  public turn() {
+  public turn(): void {
     // is the snake turning clockwise or anticlockwise?
     // if snake is facing forward, turn it backwards. Else turn it forward.
     if (this.currentDirection === 1) {
@@ -73,7 +82,7 @@ class Snake {
   /**
    * Turns the snake to the left
    */
-  public turnLeft() {
+  public turnLeft(): void {
     if (this.currentDirection === Direction.Left) {
       this.currentDirection = Direction.Down;
     } else if (this.currentDirection === Direction.Up) {
@@ -87,7 +96,7 @@ class Snake {
   /**
    * Turns the snake to the right
    */
-  public turnRight() {
+  public turnRight(): void {
     if (this.currentDirection === Direction.Left) {
       this.currentDirection = Direction.Up;
     } else if (this.currentDirection === Direction.Up) {
@@ -103,21 +112,22 @@ class Snake {
    *Returns the current position of the Snake.
    @return position of the snake.
    */
-  public get position() {
+  public get position(): Point {
     return this.currentPosition;
   }
   /**
    * Returns the current direction of the snake.
    * @return direction of the snake.
    */
-  public get direction() {
+  public get direction(): Direction {
     return this.currentDirection;
   }
   /**
    * String representation of the Snake class.
    * @returns String
    */
-  toString() {
+
+  toString(): String {
     return this.snakeColor + "is at the position" + this.position;
   }
 }

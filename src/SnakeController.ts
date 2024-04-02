@@ -52,7 +52,7 @@ class SnakeController {
    * @return the width of the world.
    */
   public get worldWidth() {
-    return this.snakeWorld.getWidth;
+    return this.snakeWorld.width;
   }
 
   /**
@@ -60,7 +60,7 @@ class SnakeController {
    * @return the height of the world.
    */
   public get worldHeight() {
-    return this.snakeWorld.getHeight;
+    return this.snakeWorld.height;
   }
 }
 

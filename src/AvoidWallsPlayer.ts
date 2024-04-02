@@ -3,7 +3,7 @@ import { Snake, Direction } from "./Snake";
 import SnakeController from "./SnakeController";
 
 /**
- * Class representing wall behavior according to player location.
+ * Class representing wall behavior according to player location. Stopping the user from leaving the confines of the world.
  */
 class AvoidWallsPlayer extends Player {
   /**

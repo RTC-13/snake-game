@@ -7,6 +7,9 @@ import Duck from "./Duck";
 import CatEngine from "./CatEngine";
 import CarStore from "./CarStore";
 import CarMileLogger from "./carMileLogger";
+import CanvasWorldView from "./CanvasWorldView";
+import { Snake } from "./Snake";
+import WorldModel from "./WorldModel";
 
 export default function App() {
   useEffect(() => {
@@ -30,14 +33,26 @@ export default function App() {
     // duck_two.quack(7);
     // const duck_three = new Duck("Yellow", "Another type of whatever duck");
     // duck_three.quack(2);
-    const redCar = new Car("red", new CatEngine());
-    const blueCar = new Car("blue", new CatEngine());
-    const greenCar = new Car("green", new CatEngine());
-    const cs = new CarStore([redCar, blueCar, greenCar]);
-    redCar.drive(10);
-    blueCar.drive(20);
-    greenCar.drive(30);
-    cs.applyToAllCars(new CarMileLogger()); // should display 10, then 20, then 30
+    // const redCar = new Car("red", new CatEngine());
+    // const blueCar = new Car("blue", new CatEngine());
+    // const greenCar = new Car("green", new CatEngine());
+    // const cs = new CarStore([redCar, blueCar, greenCar]);
+    // redCar.drive(10);
+    // blueCar.drive(20);
+    // greenCar.drive(30);
+    // cs.applyToAllCars(new CarMileLogger()); // should display 10, then 20, then 30
+
+    const snake = new Snake("red");
+    const world = new WorldModel(snake, 10, 10);
+
+    const canvasWorldView = new CanvasWorldView(10);
+    world.view = canvasWorldView;
+
+    world.update(10);
+    world.snake.turnRight();
+    world.update(10);
+    world.snake.turnRight();
+    world.update(18);
   }, []);
   return (
     <div className="App">
