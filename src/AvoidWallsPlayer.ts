@@ -1,11 +1,11 @@
 import Player from "./Player";
 import { Snake, Direction } from "./Snake";
-import SnakeController from "./SnakeController";
+import { SnakeController } from "./SnakeController";
 
 /**
  * Class representing wall behavior according to player location. Stopping the user from leaving the confines of the world.
  */
-class AvoidWallsPlayer extends Player {
+export class AvoidWallsPlayer extends Player {
   /**
    * Create AvoidWallsPlayer
    * @param {SnakeController} passedSakeController
@@ -49,5 +49,3 @@ class AvoidWallsPlayer extends Player {
     }
   }
 }
-
-export default AvoidWallsPlayer;

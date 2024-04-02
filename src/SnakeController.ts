@@ -4,7 +4,7 @@ import WorldModel from "./WorldModel";
 /**
  * Class representing a Snake Controller.
  */
-class SnakeController {
+export class SnakeController {
   private snakeWorld: WorldModel;
   private slitherer: Snake;
 
@@ -63,5 +63,3 @@ class SnakeController {
     return this.snakeWorld.height;
   }
 }
-
-export default SnakeController;

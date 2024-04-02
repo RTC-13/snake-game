@@ -1,4 +1,4 @@
 // IEngine.ts
-export default interface IEngine {
+export interface IEngine {
   makeNoise: () => void;
 }

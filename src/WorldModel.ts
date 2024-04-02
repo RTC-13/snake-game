@@ -7,7 +7,7 @@ import display from "./display";
 /**
  * Class representing the world model.
  */
-class WorldModel {
+export class WorldModel {
   private passedSnake: Snake;
   private worldWidth: number;
   private worldHeight: number;
@@ -36,7 +36,7 @@ class WorldModel {
   }
   /**
    * Returns the corresponding snake.
-   * @return the current snake.
+   * @return {Snake}
    */
   public get snake(): Snake {
     return this.passedSnake;
@@ -58,10 +58,10 @@ class WorldModel {
 
   /**
    * Sets the World View.
-   * @param worldView
+   * @param {IWorldView} passedWorldView
    */
-  public set view(worldView: IWorldView) {
-    this.worldView = worldView;
+  public set view(passedWorldView: IWorldView) {
+    this.worldView = passedWorldView;
   }
 }
 

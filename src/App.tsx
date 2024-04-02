@@ -7,7 +7,7 @@ import Duck from "./Duck";
 import CatEngine from "./CatEngine";
 import CarStore from "./CarStore";
 import CarMileLogger from "./carMileLogger";
-import CanvasWorldView from "./CanvasWorldView";
+import { CanvasWorldView } from "./CanvasWorldView";
 import { Snake } from "./Snake";
 import WorldModel from "./WorldModel";
 

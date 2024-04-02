@@ -2,8 +2,10 @@
 
 // place your code on line 5 above the export statement below
 import { Point } from "./Point";
+
 /**
- * Class representing a Snake.
+ * Enum representing the direction directions
+ * @enum {number}
  */
 enum Direction {
   Up = 1,
@@ -12,6 +14,9 @@ enum Direction {
   Right,
 }
 
+/**
+ * Class representing a Snake.
+ */
 class Snake {
   private currentPosition: Point;
   private currentDirection: number;

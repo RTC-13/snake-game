@@ -1,4 +1,4 @@
-import SnakeController from "./SnakeController";
+import { SnakeController } from "./SnakeController";
 
 /**
  * Class representing a player

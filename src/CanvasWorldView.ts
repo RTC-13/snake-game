@@ -4,7 +4,7 @@ import WorldModel from "./WorldModel";
 /**
  * Class representing a Canvas World View.
  */
-class CanvasWorldView implements IWorldView {
+export class CanvasWorldView implements IWorldView {
   private scalingFactor: number;
   private worldCanvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D;
@@ -40,4 +40,3 @@ class CanvasWorldView implements IWorldView {
     );
   }
 }
-export default CanvasWorldView;
