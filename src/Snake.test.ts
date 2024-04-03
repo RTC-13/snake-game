@@ -14,35 +14,41 @@ describe("Snake Class", () => {
     expect(snake.direction).toBe(Direction.Right);
   });
 
-  it("should move the snake correctly", () => {
-    snake.move(3); // Move snake 3 steps
-    expect(snake.position).toEqual(new Point(3, 0)); // Snake should move to the right by 3 steps
-
-    snake.turnLeft(); // Turn snake left
-    snake.move(2); // Move snake 2 steps after turning left
-    expect(snake.position).toEqual(new Point(3, 2)); // Snake should move up by 2 steps after turning left
-
-    snake.turnRight(); // Turn snake right
-    snake.move(4); // Move snake 4 steps after turning right
-    expect(snake.position).toEqual(new Point(-1, 2)); // Snake should move left by 4 steps after turning right
+  it("should move the snake correctly to the right", () => {
+    snake.move(3);
+    expect(snake.position).toEqual(new Point(3, 0));
   });
 
-  it("should turn the snake correctly", () => {
-    expect(snake.direction).toBe(Direction.Right);
+  it("should move the snake correctly to the left", () => {
+    snake.turnLeft();
+    snake.turnLeft();
+    snake.move(2);
+    expect(snake.position).toEqual(new Point(-2, 0)); // Snake should move to the left by 2 steps
+  });
 
-    snake.turnLeft(); // Turn snake left
-    expect(snake.direction).toBe(Direction.Up); // Snake should face up after turning left
+  it("should move the snake correctly upwards", () => {
+    snake.turnLeft(); // Turn snake left (facing upwards)
+    snake.move(3); // Move snake 3 steps upwards
+    expect(snake.position).toEqual(new Point(0, -3));
+  });
 
-    snake.turnRight(); // Turn snake right
-    expect(snake.direction).toBe(Direction.Right); // Snake should face right after turning right
+  it("should move the snake correctly downwards", () => {
+    snake.turnRight();
+    snake.move(4);
+    expect(snake.position).toEqual(new Point(0, 4));
+  });
 
-    // Test turning when facing other directions
-    snake.turnRight(); // Turn snake right
-    snake.turnRight(); // Turn snake right again
-    expect(snake.direction).toBe(Direction.Left); // Snake should face left after turning right twice
+  it("should chain multiple left and right turns correctly", () => {
+    snake.turnLeft(); // ^
+    snake.turnRight(); // >
+    snake.turnRight(); // down
+    snake.turnLeft(); // >
+    snake.turnLeft(); // up
+    snake.move(5);
+    expect(snake.position).toEqual(new Point(0, -5));
   });
 
   it("should return correct string representation", () => {
-    expect(snake.toString()).toBe("greenis at the position{ x: 0, y: 0 }");
+    expect(snake.toString()).toBe("green is at the position x: 0, y: 0");
   });
 });

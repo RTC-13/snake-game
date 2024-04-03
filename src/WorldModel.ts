@@ -57,6 +57,13 @@ export class WorldModel {
   }
 
   /**
+   * Returns the current view of the world model.
+   *
+   */
+  public get view(): IWorldView | null {
+    return this.worldView;
+  }
+  /**
    * Sets the World View.
    * @param {IWorldView} passedWorldView
    */
@@ -64,6 +71,3 @@ export class WorldModel {
     this.worldView = passedWorldView;
   }
 }
-
-// const blueSnake = new Snake("blue");
-// const world = new WorldModel(blueSnake, 100, 100);

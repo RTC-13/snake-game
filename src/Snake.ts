@@ -132,7 +132,7 @@ class Snake {
    */
 
   toString(): string {
-    return this.snakeColor + "is at the position" + this.position;
+    return this.snakeColor + " is at the position " + this.position;
   }
 }
 
