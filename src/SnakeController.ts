@@ -1,4 +1,5 @@
-import { Snake } from "./Snake";
+import { Point } from "./Point";
+import { Direction, Snake } from "./Snake";
 import { WorldModel } from "./WorldModel";
 
 /**
@@ -20,14 +21,14 @@ export class SnakeController {
   /**
    * Turns the snake left.
    */
-  public turnSnakeLeft() {
+  public turnSnakeLeft(): void {
     this.slitherer.turnLeft();
   }
 
   /**
    * Turns the snake right.
    */
-  public turnSnakeRight() {
+  public turnSnakeRight(): void {
     this.slitherer.turnRight();
   }
 
@@ -35,7 +36,7 @@ export class SnakeController {
    * Returns the current position of the Snake.
    * @return position of the snake.
    */
-  public get snakePosition() {
+  public get snakePosition(): Point {
     return this.slitherer.position;
   }
 
@@ -43,7 +44,7 @@ export class SnakeController {
    * Returns the current direction of the Snake.
    * @return direction of the snake.
    */
-  public get snakeDirection() {
+  public get snakeDirection(): Direction {
     return this.slitherer.direction;
   }
 
@@ -51,7 +52,7 @@ export class SnakeController {
    * Returns the width of the snake world.
    * @return the width of the world.
    */
-  public get worldWidth() {
+  public get worldWidth(): number {
     return this.snakeWorld.width;
   }
 
@@ -59,7 +60,7 @@ export class SnakeController {
    * Returns the height of the snake world.
    * @return the height of the world.
    */
-  public get worldHeight() {
+  public get worldHeight(): number {
     return this.snakeWorld.height;
   }
 }
