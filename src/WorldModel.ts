@@ -57,13 +57,6 @@ export class WorldModel {
   }
 
   /**
-   * Returns the current view of the world model.
-   *
-   */
-  public get view(): IWorldView | null {
-    return this.worldView;
-  }
-  /**
    * Sets the World View.
    * @param {IWorldView} passedWorldView
    */

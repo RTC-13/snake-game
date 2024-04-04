@@ -10,6 +10,11 @@ import CarMileLogger from "./carMileLogger";
 import { CanvasWorldView } from "./CanvasWorldView";
 import { Snake } from "./Snake";
 import { WorldModel } from "./WorldModel";
+import { SnakeController } from "./SnakeController";
+import { HumanPlayer } from "./HumanPlayer";
+import { LRKeyInputHandler } from "./LRKeyInputHandler";
+import { AvoidWallsPlayer } from "./AvoidWallsPlayer";
+import { GameController } from "./GameController";
 
 export default function App() {
   useEffect(() => {
@@ -42,17 +47,36 @@ export default function App() {
     // greenCar.drive(30);
     // cs.applyToAllCars(new CarMileLogger()); // should display 10, then 20, then 30
 
-    const snake = new Snake("red");
+    // const snake = new Snake("red");
+    // const world = new WorldModel(snake, 10, 10);
+
+    // const canvasWorldView = new CanvasWorldView(10);
+    // world.view = canvasWorldView;
+
+    // world.update(10);
+    // world.snake.turnRight();
+    // world.update(10);
+    // world.snake.turnRight();
+    // world.update(18);
+
+    const snake = new Snake("Red");
     const world = new WorldModel(snake, 10, 10);
+    const snakeController = new SnakeController(world, snake);
+    const humanPlayer = new HumanPlayer(
+      snakeController,
+      new LRKeyInputHandler()
+    );
+    const avoidWallsPlayer = new AvoidWallsPlayer(snakeController);
 
-    const canvasWorldView = new CanvasWorldView(10);
-    world.view = canvasWorldView;
+    // Create a GameController instance and pass the WorldModel
+    const gameController = new GameController(world);
 
-    world.update(10);
-    world.snake.turnRight();
-    world.update(10);
-    world.snake.turnRight();
-    world.update(18);
+    // Set players in the GameController
+    gameController.setPlayer1(humanPlayer);
+    gameController.setPlayer2(avoidWallsPlayer); // Adjust this based on your game's logic
+
+    // Run the GameController
+    gameController.run();
   }, []);
   return (
     <div className="App">

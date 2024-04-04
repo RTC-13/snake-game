@@ -3,7 +3,7 @@ import { SnakeController } from "./SnakeController";
 /**
  * Class representing a player
  */
-abstract class Player {
+export abstract class Player {
   public sc: SnakeController;
 
   /**
@@ -18,5 +18,3 @@ abstract class Player {
    */
   abstract makeTurn(): void;
 }
-
-export default Player;

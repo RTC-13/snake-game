@@ -1,4 +1,4 @@
-import Player from "./Player";
+import { Player } from "./Player";
 import { Snake, Direction } from "./Snake";
 import { SnakeController } from "./SnakeController";
 
