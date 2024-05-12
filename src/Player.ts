@@ -8,10 +8,10 @@ export abstract class Player {
 
   /**
    * Create a player
-   * @param {SnakeController} passedSnakeController snake controller for the player class.
+   * @param {SnakeController} snakeController snake controller for the player class.
    */
-  constructor(passedSnakeController: SnakeController) {
-    this.sc = passedSnakeController;
+  constructor(snakeController: SnakeController) {
+    this.sc = snakeController;
   }
   /**
    * Abastract make turn snake class
