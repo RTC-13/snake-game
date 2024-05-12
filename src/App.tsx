@@ -15,11 +15,34 @@ import { HumanPlayer } from "./HumanPlayer";
 import { LRKeyInputHandler } from "./LRKeyInputHandler";
 import { AvoidWallsPlayer } from "./AvoidWallsPlayer";
 import { GameController } from "./GameController";
+import display from "./display";
 
 export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
+    const snake1 = new Snake("Red");
+    const WorldModel1 = new WorldModel(snake1, 10, 10);
+    const snakeController = new SnakeController(WorldModel1, snake1);
+    const avoidWallsPlayer = new AvoidWallsPlayer(snakeController);
+    const canvasWorldView = new CanvasWorldView(25);
+
+    WorldModel1.view = canvasWorldView;
+    WorldModel1.update(0);
+
+    const LRKeyInpuHandler = new LRKeyInputHandler();
+    const humanPlayer = new HumanPlayer(snakeController, LRKeyInpuHandler);
+    const gameController = new GameController(WorldModel1);
+    gameController.playerOne = humanPlayer;
+    gameController.playerTwo = avoidWallsPlayer;
+    gameController.run();
+    display(
+      "The initial position of the snake:",
+      WorldModel1.snake.position.x,
+      ",",
+      WorldModel1.snake.position.y
+    );
+    display(WorldModel1.width, WorldModel1.height);
     // display("hey");
     // const redCar = new Car("red");
     // const blueCar = new Car("blue");
@@ -58,25 +81,6 @@ export default function App() {
     // world.update(10);
     // world.snake.turnRight();
     // world.update(18);
-
-    const snake = new Snake("Red");
-    const world = new WorldModel(snake, 10, 10);
-    const snakeController = new SnakeController(world, snake);
-    const humanPlayer = new HumanPlayer(
-      snakeController,
-      new LRKeyInputHandler()
-    );
-    const avoidWallsPlayer = new AvoidWallsPlayer(snakeController);
-
-    // Create a GameController instance and pass the WorldModel
-    const gameController = new GameController(world);
-
-    // Set players in the GameController
-    gameController.setPlayer1(humanPlayer);
-    gameController.setPlayer2(avoidWallsPlayer); // Adjust this based on your game's logic
-
-    // Run the GameController
-    gameController.run();
   }, []);
   return (
     <div className="App">

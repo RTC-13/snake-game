@@ -5,32 +5,33 @@ export class GameController {
   private world: WorldModel;
   private player1: Player | null = null;
   private player2: Player | null = null;
-  private lastTime: number = 0;
 
   constructor(world: WorldModel) {
     this.world = world;
+    this.player1 = null;
+    this.player2 = null;
   }
 
-  setPlayer1(player: Player): void {
+  public set playerOne(player: Player) {
     this.player1 = player;
   }
 
-  setPlayer2(player: Player): void {
+  public set playerTwo(player: Player) {
     this.player2 = player;
   }
 
   run(): void {
+    let lastTime = 0;
     const updateFrame = (timestamp: number) => {
-      if (!this.lastTime) this.lastTime = timestamp;
-
       this.player1?.makeTurn();
       this.player2?.makeTurn();
+      if (!lastTime) lastTime = timestamp;
 
-      const elapsedTime = timestamp - this.lastTime;
+      const elapsedTime = timestamp - lastTime;
 
       if (elapsedTime > 250) {
         this.world.update(1);
-        this.lastTime = timestamp;
+        lastTime += 100;
       }
 
       requestAnimationFrame(updateFrame);
