@@ -28,13 +28,17 @@ export class CanvasWorldView implements IWorldView {
 
   public display(passedWorldModel: WorldModel): void {
     const snake = passedWorldModel.snake;
+
+    const scaledSnakeX = snake.position.x * this.scalingFactor;
+    const scaledSnakeY = snake.position.y * this.scalingFactor;
+
     this.worldCanvas.width = passedWorldModel.width * this.scalingFactor;
     this.worldCanvas.height = passedWorldModel.height * this.scalingFactor;
 
     this.context.fillStyle = snake.color;
     this.context.fillRect(
-      snake.position.x,
-      snake.position.y,
+      scaledSnakeX,
+      scaledSnakeY,
       this.scalingFactor,
       this.scalingFactor
     );

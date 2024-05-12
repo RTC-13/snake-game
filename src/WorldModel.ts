@@ -8,17 +8,17 @@ import display from "./display";
  * Class representing the world model.
  */
 export class WorldModel {
-  private passedSnake: Snake;
+  private snake_: Snake;
   private worldWidth: number;
   private worldHeight: number;
   private worldView: IWorldView | null;
 
   /**
    * Create a World Model.
-   * @param passedSnake
+   * @param snake_
    */
   constructor(passedSnake: Snake, passedWidth: number, passedHeight: number) {
-    this.passedSnake = passedSnake;
+    this.snake_ = passedSnake;
     this.worldWidth = passedWidth;
     this.worldHeight = passedHeight;
     this.worldView = null;
@@ -29,7 +29,7 @@ export class WorldModel {
    * @param {number} steps
    */
   public update(steps: number): void {
-    this.snake.move(steps);
+    this.snake_.move(steps);
     if (this.worldView !== null) {
       this.worldView.display(this);
     }
@@ -39,7 +39,7 @@ export class WorldModel {
    * @return {Snake}
    */
   public get snake(): Snake {
-    return this.passedSnake;
+    return this.snake_;
   }
   /**
    * Returns the width of the World Model.
