@@ -1,6 +1,6 @@
 import { Point } from "./Point";
 import { Direction, Snake } from "./Snake";
-import { WorldModel } from "./WorldModel";
+import WorldModel from "./WorldModel";
 
 /**
  * Class representing a Snake Controller.

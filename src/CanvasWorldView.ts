@@ -1,18 +1,12 @@
 import { IWorldView } from "./IWorldView";
-import { WorldModel } from "./WorldModel";
+import WorldModel from "./WorldModel";
+import { Snake } from "./Snake";
+import { Point } from "./Point";
 
-/**
- * Class representing a Canvas World View.
- */
 export class CanvasWorldView implements IWorldView {
   private scalingFactor: number;
   private worldCanvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D;
-
-  /**
-   * Create the Canvas World View.
-   * @param {number} scalingFactor scale of the world.
-   */
 
   constructor(scalingFactor: number) {
     this.scalingFactor = scalingFactor;
@@ -21,26 +15,30 @@ export class CanvasWorldView implements IWorldView {
 
     document.body.appendChild(this.worldCanvas);
   }
-  /**
-   * Display the canvas of the world.
-   * @param {WorldModel} passedWorldModel model of the snake game to be used in the canvas.
-   */
 
   public display(passedWorldModel: WorldModel): void {
-    const snake = passedWorldModel.snake;
-
-    const scaledSnakeX = snake.position.x * this.scalingFactor;
-    const scaledSnakeY = snake.position.y * this.scalingFactor;
-
-    this.worldCanvas.width = passedWorldModel.width * this.scalingFactor;
-    this.worldCanvas.height = passedWorldModel.height * this.scalingFactor;
-
-    this.context.fillStyle = snake.color;
-    this.context.fillRect(
-      scaledSnakeX,
-      scaledSnakeY,
-      this.scalingFactor,
-      this.scalingFactor
+    // Clear the canvas before drawing
+    this.context.clearRect(
+      0,
+      0,
+      this.worldCanvas.width,
+      this.worldCanvas.height
     );
+
+    passedWorldModel.allSnakes.forEach((snake: Snake) => {
+      snake.parts().forEach((part: Point) => {
+        const scaledPartX = part.x * this.scalingFactor;
+        const scaledPartY = part.y * this.scalingFactor;
+
+        // Draw a square at the scaled coordinates
+        this.context.fillStyle = snake.color;
+        this.context.fillRect(
+          scaledPartX * this.scalingFactor,
+          scaledPartY * this.scalingFactor,
+          this.scalingFactor,
+          this.scalingFactor
+        );
+      });
+    });
   }
 }

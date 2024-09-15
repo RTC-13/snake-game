@@ -9,40 +9,34 @@ import CarStore from "./CarStore";
 import CarMileLogger from "./carMileLogger";
 import { CanvasWorldView } from "./CanvasWorldView";
 import { Snake } from "./Snake";
-import { WorldModel } from "./WorldModel";
+import WorldModel from "./WorldModel";
 import { SnakeController } from "./SnakeController";
 import { HumanPlayer } from "./HumanPlayer";
 import { LRKeyInputHandler } from "./LRKeyInputHandler";
 import { AvoidWallsPlayer } from "./AvoidWallsPlayer";
 import { GameController } from "./GameController";
+import { Point } from "./Point";
 import display from "./display";
 
 export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
-    const snake1 = new Snake("Red");
-    const WorldModel1 = new WorldModel(snake1, 10, 10);
-    const snakeController = new SnakeController(WorldModel1, snake1);
-    const avoidWallsPlayer = new AvoidWallsPlayer(snakeController);
-    const canvasWorldView = new CanvasWorldView(25);
+    const snake1 = new Snake("Red", new Point(0, 0), 10);
+    // const WorldModel1 = new WorldModel(snake1, 10);
+    // const snakeController = new SnakeController(WorldModel1, snake1);
+    // const avoidWallsPlayer = new AvoidWallsPlayer(snakeController);
+    // const canvasWorldView = new CanvasWorldView(25);
 
-    WorldModel1.view = canvasWorldView;
-    WorldModel1.update(0);
+    // WorldModel1.view = canvasWorldView;
+    // WorldModel1.update(0);
 
-    const LRKeyInpuHandler = new LRKeyInputHandler();
-    const humanPlayer = new HumanPlayer(snakeController, LRKeyInpuHandler);
-    const gameController = new GameController(WorldModel1);
-    gameController.playerOne = humanPlayer;
-    gameController.playerTwo = avoidWallsPlayer;
-    gameController.run();
-    display(
-      "The initial position of the snake:",
-      WorldModel1.snake.position.x,
-      ",",
-      WorldModel1.snake.position.y
-    );
-    display(WorldModel1.width, WorldModel1.height);
+    // const LRKeyInputHandler1 = new LRKeyInputHandler();
+    // const humanPlayer = new HumanPlayer(snakeController, LRKeyInputHandler1);
+    // const gameController = new GameController(WorldModel1);
+    // gameController.playerOne = humanPlayer;
+    // gameController.playerTwo = avoidWallsPlayer;
+    // gameController.run();
     // display("hey");
     // const redCar = new Car("red");
     // const blueCar = new Car("blue");

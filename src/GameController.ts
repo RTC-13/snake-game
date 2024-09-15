@@ -1,4 +1,4 @@
-import { WorldModel } from "./WorldModel";
+import WorldModel from "./WorldModel";
 import { Player } from "./Player";
 
 export class GameController {

@@ -36,6 +36,15 @@ export class Point {
    * Point.toString()
    * @returns {string}
    */
+
+  /**
+   * Returns true if the given point has the same coordinates as this point.
+   * @param p - Point to compare with.
+   * @return True if coordinates are equal, false otherwise.
+   */
+  equals(p: Point): boolean {
+    return this.xcoord === p.x && this.ycoord === p.y;
+  }
   toString(): string {
     return `x: ${this.xcoord}, y: ${this.ycoord}`;
   }

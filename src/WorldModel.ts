@@ -1,66 +1,60 @@
-// import display from "./display";
-
-// place your code on line 5 above the export statement below
-import { IWorldView } from "./IWorldView";
 import { Snake } from "./Snake";
-import display from "./display";
-/**
- * Class representing the world model.
- */
-export class WorldModel {
-  private snake_: Snake;
-  private worldWidth: number;
-  private worldHeight: number;
-  private worldView: IWorldView | null;
+import { IWorldView } from "./IWorldView";
 
-  /**
-   * Create a World Model.
-   * @param snake_
-   */
-  constructor(passedSnake: Snake, passedWidth: number, passedHeight: number) {
-    this.snake_ = passedSnake;
-    this.worldWidth = passedWidth;
-    this.worldHeight = passedHeight;
-    this.worldView = null;
+class WorldModel {
+  private _width: number;
+  private _height: number;
+  private _allSnakes: Snake[];
+  private _allViews: IWorldView[];
+
+  constructor(worldWidth: number, worldHeight: number) {
+    // keept old parameters due to tests breaking/other problems
+    this._width = worldWidth;
+    this._height = worldHeight;
+    this._allSnakes = [];
+    this._allViews = [];
   }
 
-  /**
-   * Updates the position of the snake in the world model by moving it the # of specified steps.
-   * @param {number} steps
-   */
   public update(steps: number): void {
-    this.snake_.move(steps);
-    if (this.worldView !== null) {
-      this.worldView.display(this);
+    const collidedSnakes: Snake[] = [];
+    this._allSnakes.forEach((snake) => snake.move(steps));
+    if (this._allViews) {
+      this._allViews.forEach((view) => view.display(this));
     }
-  }
-  /**
-   * Returns the corresponding snake.
-   * @return {Snake}
-   */
-  public get snake(): Snake {
-    return this.snake_;
-  }
-  /**
-   * Returns the width of the World Model.
-   * @return {number}
-   */
-  public get width(): number {
-    return this.worldWidth;
-  }
-  /**
-   * Returns the height of the World Model.
-   * @return {number}
-   */
-  public get height(): number {
-    return this.worldHeight;
+    this._allSnakes.forEach((snake) => {
+      if (this._allSnakes.some((otherSnake) => snake.didCollide(otherSnake))) {
+        collidedSnakes.push(snake);
+      }
+    });
+
+    // Remove collided snakes from allSnakes array
+    collidedSnakes.forEach((snake) => {
+      const index = this._allSnakes.indexOf(snake);
+      if (index !== -1) {
+        this._allSnakes.splice(index, 1);
+      }
+    });
   }
 
-  /**
-   * Sets the World View.
-   * @param {IWorldView} passedWorldView
-   */
-  public set view(passedWorldView: IWorldView) {
-    this.worldView = passedWorldView;
+  public addSnake(s: Snake) {
+    this._allSnakes.push(s);
+  }
+
+  public addView(v: IWorldView) {
+    this._allViews.push(v);
+  }
+
+  public get allSnakes(): Snake[] {
+    return this._allSnakes;
+  }
+
+  public get width(): number {
+    return this._width;
+  }
+
+  public get height(): number {
+    return this._height;
   }
 }
+
+export default WorldModel;
